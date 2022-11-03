@@ -6,7 +6,7 @@ public class ExercicioUm {
 		
 		int soma  = num1 + num2;
 		
-		System.out.println("Soma: " + soma);
+		resultado("resultado", soma);
 		
 	}
 	
@@ -14,7 +14,7 @@ public class ExercicioUm {
 		
 		int sub  = num1 - num2;
 		
-		System.out.println("Subtracao: " + sub);
+		resultado("resultado", sub);
 		
 	}
 	
@@ -22,7 +22,7 @@ public class ExercicioUm {
 			
 		int mult  = num1 * num2;
 			
-		System.out.println("Multiplicacao: " + mult);
+		resultado("resultado", mult);
 	}
 	
 	public static void Div(int num1, int num2) {
@@ -34,7 +34,7 @@ public class ExercicioUm {
 		
 		double div  = numero1 / numero2;
 		
-		System.out.printf("Divisao: %.2f%n", div);
+		resultado("resultado", div);
 		
 	}
 	
@@ -46,27 +46,66 @@ public class ExercicioUm {
 		
 		double resto = numero1 % numero2;
 		
-		System.out.printf("Resto da divisao: %.2f %n", resto);
+		resultado("resultado", resto);
 		
 	}
+	
+	public static void resultado(String operacao, double resultado) {
+		
+		System.out.printf(operacao + ": " + resultado);
+		
+	}
+	
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		
-		int num1 = sc.nextInt();
-		int num2 = sc.nextInt();
+		int num1 = scanner.nextInt();
+		int num2 = scanner.nextInt();
 		
-		Soma(num1,num2);
+		int opcao;
+		do {
+			
+			System.out.println("\n\n");
+			System.out.println("+-------------------------------------------+");
+			System.out.println("|             Menu de Opcoes                |");
+			System.out.println("+-------------------------------------------+");
+			System.out.println("| 1 - Soma                                  |");
+			System.out.println("| 2 - Subtracao                             |");
+			System.out.println("| 3 - Multiplicacao                         |");
+			System.out.println("| 4 - Divisao                               |");
+			System.out.println("| 5 - modulo da divisao                     |");
+			System.out.println("| 0 - Sair                                  |");
+			System.out.println("+-------------------------------------------+");
+			opcao = scanner.nextInt();
+			
+			switch (opcao) {
+			case 1:
+				Soma(num1,num2);
+				break;
+			
+			case 2:
+				Sub(num1,num2);
+				break;
+				
+			case 3:
+				Mult(num1,num2);
+				break;
+				
+			case 4:
+				Div(num1,num2);
+				break;
+				
+			case 5:
+				Resto(num1,num2);
+				break;	
+			}
+		} while(opcao != 0);
 		
-		Sub(num1,num2);
 		
-		Mult(num1,num2);
 		
-		Div(num1,num2);
 		
-		Resto(num1,num2);
-		
-		sc.close();
+		scanner.close();
 	}
 
 }
